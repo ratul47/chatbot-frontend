@@ -1,0 +1,157 @@
+version: "3.1"
+intents:
+  - affirm
+  - bot_challenge
+  - deny
+  - departure_date_info
+  - departure_info
+  - flight_book
+  - goodbye
+  - greet
+  - mood_great
+  - mood_unhappy
+  - no_of_passengers_info
+  - out_of_scope
+  - return_date_info
+entities:
+  - city:
+      roles:
+        - departure
+        - destination
+  - no_of_passengers:
+      roles:
+        - adult
+        - child
+        - infant
+  - date:
+      roles:
+        - arrival
+        - return
+  - two_way
+slots:
+  departure_place:
+    type: text
+    influence_conversation: false
+    mappings:
+      - type: from_entity
+        entity: city
+        role: departure
+  destination_place:
+    type: text
+    influence_conversation: false
+    mappings:
+      - type: from_entity
+        entity: city
+        role: destination
+  arrival_date:
+    type: text
+    influence_conversation: false
+    mappings:
+      - type: from_entity
+        entity: date
+        role: arrival
+        intent: departure_date_info
+        not_intent: return_date_info
+  return_date:
+    type: text
+    influence_conversation: false
+    mappings:
+      - type: from_entity
+        entity: date
+        role: return
+        intent: return_date_info
+        not_intent: departure_date_info
+  is_two_way:
+    type: bool
+    mappings:
+      - type: from_intent
+        intent: affirm
+        value: true
+      - type: from_intent
+        intent: deny
+        value: false
+  no_of_adult:
+    type: text
+    influence_conversation: false
+    mappings:
+      - type: from_entity
+        entity: no_of_passengers
+        role: adult
+  no_of_child:
+    type: text
+    influence_conversation: false
+    mappings:
+      - type: from_entity
+        entity: no_of_passengers
+        role: child
+  no_of_infant:
+    type: text
+    influence_conversation: false
+    mappings:
+      - type: from_entity
+        entity: no_of_passengers
+        role: infant
+responses:
+  utter_greet:
+    - text: Hey! How are you?
+      buttons:
+        - title: Search a Flight
+          payload: /flight_book
+  utter_cheer_up:
+    - text: "Here is something to cheer you up:"
+      image: https://i.imgur.com/nGF1K8f.jpg
+  utter_did_that_help:
+    - text: Did that help you?
+  utter_happy:
+    - text: Great, carry on!
+  utter_goodbye:
+    - text: Bye
+  utter_iamabot:
+    - text: I am a bot, powered by Rasa.
+  utter_ask_departure_place:
+    - text: What's your departure city?
+  utter_ask_destination_place:
+    - text: What's your destination?
+  utter_ask_arrival_date:
+    - text: When do you want to fly? Say dates like dd/mm/yyyy.
+  utter_ask_return_date:
+    - text: When do you want to return? Say dates like dd-mm-yyyy.
+  utter_ask_is_two_way:
+    - text: Is this a one-way or return  journey?
+      buttons:
+        - title: One-Way
+          payload: no
+        - title: Return
+          payload: yes
+  utter_ask_no_of_adult:
+    - text: How many people are travelling? Input like,AD -> Adult, CHD -> Child ,INF -> INFANT exmaple; 3 ad, 2 chd, 1 inf.
+  utter_search_flight:
+    - text: I am searching by  departure={departure_place} destination={destination_place} twoway={is_two_way} adult={no_of_adult} child={no_of_child} infant={no_of_infant} arrival={arrival_date} return={return_date} .
+  utter_out_of_scope:
+    - text: Sorry, I can't handle that request.
+  utter_link:
+    - text: Here is the [details]({link})
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
+actions:
+  - action_get_flight
+  - utter_ask_arrival_date
+  - utter_ask_departure_place
+  - utter_ask_is_two_way
+  - utter_ask_no_of_adult
+  - utter_ask_return_date
+  - utter_goodbye
+  - utter_greet
+  - utter_out_of_scope
+  - utter_search_flight
+  - validate_info_form
+  - utter_link
+forms:
+  info_form:
+    required_slots:
+      - departure_place
+      - destination_place
+      - arrival_date
+      - is_two_way
+      - no_of_adult

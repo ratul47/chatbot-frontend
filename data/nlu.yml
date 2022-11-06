@@ -1,0 +1,164 @@
+version: "3.1"
+nlu:
+- intent: greet
+  examples: |
+    - hey
+    - hello
+    - hi
+    - hello there
+    - good morning
+    - good evening
+    - moin
+    - hey there
+    - let's go
+    - hey dude
+    - goodmorning
+    - goodevening
+    - good afternoon
+- intent: goodbye
+  examples: |
+    - cu
+    - good by
+    - cee you later
+    - good night
+    - bye
+    - goodbye
+    - have a nice day
+    - see you around
+    - bye bye
+    - see you later
+- intent: affirm
+  examples: |
+    - yes
+    - y
+    - indeed
+    - of course
+    - that sounds good
+    - correct
+- intent: deny
+  examples: |
+    - no
+    - n
+    - never
+    - I don't think so
+    - don't like that
+    - no way
+    - not really
+- intent: bot_challenge
+  examples: |
+    - are you a bot?
+    - are you a human?
+    - am I talking to a bot?
+    - am I talking to a human?
+- intent: flight_book
+  examples: |
+    - I want to book a flight
+    - Please book a flight
+    - I want to fly
+    - i want to fly
+- intent: departure_info
+  examples: |
+    - I'd like to go [jessore]{"entity": "city", "role": "destination"}
+    - I want to go [dhaka]{"entity": "city", "role": "destination"}
+    - [rajshahi]{"entity": "city", "role": "destination"}
+    - I will like to travel from [Khulna]{"entity": "city", "role": "departure"}
+    - [Barisal]{"entity": "city", "role": "departure"}
+    - [dhaka]{"entity": "city", "role": "departure"}
+    - [khulna]{"entity": "city", "role": "destination"}
+    - [jessore]{"entity": "city", "role": "destination"}
+    - from [Kolkata]{"entity": "city", "role": "departure"}
+    - destination is [Kolkata]{"entity": "city", "role": "destination"}
+    - [Kolkata]{"entity": "city", "role": "destination"}
+    - [Chennai]{"entity": "city", "role": "destination"}
+    - [Chennai]{"entity": "city", "role": "departure"}
+    - [Chittagong]{"entity": "city", "role": "departure"}
+    - [Chittagong]{"entity": "city", "role": "destination"}
+    - i like to travel [Sylhet]{"entity": "city", "role": "destination"}
+    - i will fly [sylhet]{"entity": "city", "role": "departure"}
+    - [Sylhet]{"entity": "city", "role": "destination"}
+    - [Saidpur]{"entity": "city", "role": "destination"}
+    - [Saidpur]{"entity": "city", "role": "departure"}
+    - [Guangzhou]{"entity": "city", "role": "departure"}
+    - [Guangzhou]{"entity": "city", "role": "destination"}
+    - i want to go [Kuala Lumpur]{"entity": "city", "role": "departure"}
+    - take me to [Kuala Lumpur]{"entity": "city", "role": "destination"}
+    - [Male]{"entity": "city", "role": "departure"}
+    - [Male]{"entity": "city", "role": "destination"}
+    - [Muscat]{"entity": "city", "role": "departure"}
+    - [Muscat]{"entity": "city", "role": "destination"}
+    - [Doha]{"entity": "city", "role": "departure"}
+    - i will fly to [Doha]{"entity": "city", "role": "destination"}
+    - i like to fly from [singapore]{"entity": "city", "role": "departure"}
+    - [Singapore]{"entity": "city", "role": "destination"}
+    - travel form [Bangkok]{"entity": "city", "role": "departure"}
+    - navigate to [Bangkok]{"entity": "city", "role": "destination"}
+    - [Dubai]{"entity": "city", "role": "departure"}
+    - fly to [Dubai]{"entity": "city", "role": "destination"}
+    - [Sharjah]{"entity": "city", "role": "departure"}
+    - [Sharjah]{"entity": "city", "role": "destination"}
+    - [dhaka]{"entity": "city", "role": "departure"}
+    - [jessore]{"entity": "city", "role": "destination"}
+- intent: departure_date_info
+  examples: |
+    - arrival date is [22/05/2022]{"entity": "date", "role": "arrival"}
+    - [09/10/2022]{"entity": "date", "role": "arrival"}
+    - [5/10/2032]{"entity": "date", "role": "arrival"}
+    - [22/10/2022]{"entity": "date", "role": "arrival"}
+    - [22/11/2022]{"entity": "date", "role": "arrival"}
+- intent: return_date_info
+  examples: |
+    - [10-12-2022]{"entity": "date", "role": "return"}
+    - [12-05-2022]{"entity": "date", "role": "return"}
+    - return date is [24-06-2022]{"entity": "date", "role": "return"}
+    - [24-11-2022]{"entity": "date", "role": "return"}
+- intent: no_of_passengers_info
+  examples: |
+    - [3]{"entity": "no_of_passengers", "role": "adult"} AD [2]{"entity": "no_of_passengers", "role": "child"} CHD [3]{"entity": "no_of_passengers", "role": "infant"} INF.
+    - [2]{"entity": "no_of_passengers", "role": "adult"} ad [1]{"entity": "no_of_passengers", "role": "child"} chd [1]{"entity": "no_of_passengers", "role": "infant"} inf.
+    - [1]{"entity": "no_of_passengers", "role": "adult"} AD [0]{"entity": "no_of_passengers", "role": "child"} CHD [0]{"entity": "no_of_passengers", "role": "infant"} INF
+    - [1]{"entity": "no_of_passengers", "role": "adult"} AD [2]{"entity": "no_of_passengers", "role": "child"} CHD [1]{"entity": "no_of_passengers", "role": "infant"} INF
+    - [3]{"entity": "no_of_passengers", "role": "adult"} AD [2]{"entity": "no_of_passengers", "role": "child"} CHD [1]{"entity": "no_of_passengers", "role": "infant"} INF
+    - [3]{"entity": "no_of_passengers", "role": "adult"} ad [2]{"entity": "no_of_passengers", "role": "child"} chd [1]{"entity": "no_of_passengers", "role": "infant"} inf
+    - [1]{"entity": "no_of_passengers", "role": "adult"} ad [2]{"entity": "no_of_passengers", "role": "child"} chd [3]{"entity": "no_of_passengers", "role": "infant"} inf
+    - [2]{"entity": "no_of_passengers", "role": "adult"} Ad [0]{"entity": "no_of_passengers", "role": "child"} chd [0]{"entity": "no_of_passengers", "role": "infant"} inf
+    - [3]{"entity": "no_of_passengers", "role": "adult"} ad [2]{"entity": "no_of_passengers", "role": "child"} chd [0]{"entity": "no_of_passengers", "role": "infant"} inf
+    - [1]{"entity": "no_of_passengers", "role": "adult"} ad [0]{"entity": "no_of_passengers", "role": "child"} chd [0]{"entity": "no_of_passengers", "role": "infant"} inf
+- intent: out_of_scope
+  examples: |
+    - Sing a song
+    - get out
+    - dance with me
+- synonym: Today
+  examples: |
+    - Morning
+    - Noon
+    - Night
+    - in the afternoon
+    - In the evening
+    - today
+- regex: date
+  examples: |
+    - /^(0?[1-9]|[12][0-9]|3[01])[\/\-](0?[1-9]|1[012])[\/\-]\d{4}$/
+- regex: no_of_passengers
+  examples: |
+    - /(?<!\S)\d(?!\S)/
+- lookup: city
+  examples: |
+    - Barisal
+    - Chittagong
+    - Cox's Bazar
+    - Jessore
+    - Rajshahi
+    - Saidpur
+    - Sylhet
+    - Guangzhou
+    - Chennai
+    - Kolkata
+    - Kuala Lumpur
+    - Male
+    - Muscat
+    - Doha
+    - Singapore
+    - Bangkok
+    - Dubai
+    - Sharjah
